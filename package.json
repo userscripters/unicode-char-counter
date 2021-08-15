@@ -1,6 +1,6 @@
 {
   "name": "@userscripters/unicode-char-counter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Teaching SE's character counter how to count",
   "scripts": {
     "test": "mocha",
