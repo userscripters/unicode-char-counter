@@ -1,4 +1,5 @@
-"use strict";
+type HeatColor = "warm" | "hot" | "supernova" | "fc-red-400";
+
 ((w, d) => {
     const safeStringLength = (text: string) => {
         let count = 0;
@@ -39,7 +40,7 @@
             "cool"
         );
 
-        const colorMap = {
+        const colorMap: Record<HeatColor, number> = {
             "warm": 0.4,
             "hot": 0.6,
             "supernova": 0.8,
@@ -81,10 +82,12 @@
             if (!unfriendlyCount) return (friendlyCounter.textContent = "");
 
             const agreement = theirLeft === ourLeft ? "and" : "but";
+
             const ours =
                 ourLeft >= 0
                     ? `${ourLeft} char${ourLeft !== 1 ? "s" : ""}`
                     : `over by ${Math.abs(ourLeft)}`;
+
             const theirs =
                 theirLeft >= 0
                     ? `${theirLeft} left`
@@ -92,11 +95,18 @@
 
             friendlyCounter.textContent = `${ours} (of ${max}) left (${agreement} SE thinks ${theirs})`;
 
-            const [colorCls] = colorEntries
-                .filter(([_color, mod]) => max * mod < ourLength)
-                .reduce((a, c) => (a[1] < c[1] ? c : a)) || ["cool", 1];
-            friendlyCounter.classList.remove(...colorClasses);
-            friendlyCounter.classList.add(colorCls);
+            const matchingColors = colorEntries.filter(
+                ([_color, mod]) => max * mod < ourLength
+            );
+
+            const [colorCls] = matchingColors.reduce(
+                (a, c) => (a[1] < c[1] ? c : a),
+                ["cool", 0]
+            );
+
+            const { classList } = friendlyCounter;
+            classList.remove(...colorClasses);
+            classList.add(colorCls);
         });
     });
 })(window, document);
