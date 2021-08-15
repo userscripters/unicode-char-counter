@@ -1,7 +1,7 @@
 {
-  "name": "@userscripters/template",
-  "version": "1.0.0",
-  "description": "template repository for userscripters' projects",
+  "name": "@userscripters/unicode-char-counter",
+  "version": "0.1.0",
+  "description": "Teaching SE's character counter how to count",
   "scripts": {
     "test": "mocha",
     "lint": "eslint src --fix --ext .js,.ts",
@@ -18,27 +18,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/userscripters/template.git"
+    "url": "git+https://github.com/userscripters/unicode-char-counter.git"
   },
   "keywords": [
     "userscripts",
-    "stackoverflow"
+    "stackoverflow",
+    "unicode",
+    "counter"
   ],
   "author": {
-    "name": "Jane Doe",
-    "email": "jane@doe.com"
+    "name": "Oleg Valter",
+    "email": "oleg.a.valter@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "John Doe",
-      "email": "john@doe.com"
-    }
-  ],
+  "contributors": [],
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/userscripters/template/issues"
+    "url": "https://github.com/userscripters/unicode-char-counter/issues"
   },
-  "homepage": "https://github.com/userscripters/template#readme",
+  "homepage": "https://github.com/userscripters/unicode-char-counter#readme",
   "devDependencies": {
     "@types/chai": "^4.2.21",
     "@types/chai-as-promised": "^7.1.4",
