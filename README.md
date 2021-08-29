@@ -1,8 +1,9 @@
 
 # About
 
-| Author       | Oleg Valter<br>email: [oleg.a.valter@gmail.com](mailto:oleg.a.valter@gmail.com) |
+| Author       | Oleg Valter<br>[oleg.a.valter@gmail.com](mailto:oleg.a.valter@gmail.com) |
 | :----------- | :----------------------- |
+| Contributors |               |
 | Name         | @userscripters/unicode-char-counter    |
 | Description  | Teaching SE's character counter how to count           |
 | License      | [GPL-3.0-or-later](https://spdx.org/licenses/GPL-3.0-or-later)                 |

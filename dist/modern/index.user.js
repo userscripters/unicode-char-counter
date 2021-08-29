@@ -9,7 +9,7 @@
 // @match           https://*.stackapps.com/questions/*
 // @match           https://*.stackexchange.com/questions/*
 // @match           https://*.stackoverflow.com/questions/*
-// @name            unicode-char-counter
+// @name            Unicode Char Counter
 // @namespace       userscripters
 // @run-at          document-start
 // @source          git+https://github.com/userscripters/unicode-char-counter.git
