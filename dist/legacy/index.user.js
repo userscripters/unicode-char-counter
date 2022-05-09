@@ -3,12 +3,26 @@
 // @description     Teaching SE's character counter how to count
 // @grant           none
 // @homepage        https://github.com/userscripters/unicode-char-counter#readme
-// @match           https://*.askubuntu.com/questions/*
-// @match           https://*.mathoverflow.net/questions/*
-// @match           https://*.serverfault.com/questions/*
-// @match           https://*.stackapps.com/questions/*
 // @match           https://*.stackexchange.com/questions/*
-// @match           https://*.stackoverflow.com/questions/*
+// @match           https://askubuntu.com/questions/*
+// @match           https://es.meta.stackoverflow.com/questions/*
+// @match           https://es.stackoverflow.com/questions/*
+// @match           https://ja.meta.stackoverflow.com/questions/*
+// @match           https://ja.stackoverflow.com/questions/*
+// @match           https://mathoverflow.net/questions/*
+// @match           https://meta.askubuntu.com/questions/*
+// @match           https://meta.mathoverflow.net/questions/*
+// @match           https://meta.serverfault.com/questions/*
+// @match           https://meta.stackoverflow.com/questions/*
+// @match           https://meta.superuser.com/questions/*
+// @match           https://pt.meta.stackoverflow.com/questions/*
+// @match           https://pt.stackoverflow.com/questions/*
+// @match           https://ru.meta.stackoverflow.com/questions/*
+// @match           https://ru.stackoverflow.com/questions/*
+// @match           https://serverfault.com/questions/*
+// @match           https://stackapps.com/questions/*
+// @match           https://stackoverflow.com/questions/*
+// @match           https://superuser.com/questions/*
 // @name            Unicode Char Counter
 // @namespace       userscripters
 // @run-at          document-start
@@ -45,10 +59,14 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 (function (w, d) {
     var safeStringLength = function (text) {
@@ -118,19 +136,19 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
                 return (friendlyCounter.textContent = "");
             var agreement = theirLeft === ourLeft ? "and" : "but";
             var ours = ourLeft >= 0
-                ? ourLeft + " char" + (ourLeft !== 1 ? "s" : "")
-                : "over by " + Math.abs(ourLeft);
+                ? "".concat(ourLeft, " char").concat(ourLeft !== 1 ? "s" : "")
+                : "over by ".concat(Math.abs(ourLeft));
             var theirs = theirLeft >= 0
-                ? theirLeft + " left"
-                : "is over by " + Math.abs(theirLeft);
-            friendlyCounter.textContent = ours + " (of " + max + ") left (" + agreement + " SE thinks " + theirs + ")";
+                ? "".concat(theirLeft, " left")
+                : "is over by ".concat(Math.abs(theirLeft));
+            friendlyCounter.textContent = "".concat(ours, " (of ").concat(max, ") left (").concat(agreement, " SE thinks ").concat(theirs, ")");
             var matchingColors = colorEntries.filter(function (_a) {
                 var _b = __read(_a, 2), _color = _b[0], mod = _b[1];
                 return max * mod < ourLength;
             });
             var _e = __read(matchingColors.reduce(function (a, c) { return (a[1] < c[1] ? c : a); }, ["cool", 0]), 1), colorCls = _e[0];
             var classList = friendlyCounter.classList;
-            classList.remove.apply(classList, __spreadArray([], __read(colorClasses)));
+            classList.remove.apply(classList, __spreadArray([], __read(colorClasses), false));
             classList.add(colorCls);
         });
     });
